@@ -88,3 +88,22 @@ spec:
       - name: mysql-volume
         persistentVolumeClaim:
          claimName: mysql-pvc
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: init-mysqldb-config
+data:
+  createDB.sql: 
+    CREATE DATABASE IF NOT EXITS practice_board;
+    USE practice_board;
+    CREATE TABLE IF NOT EXITS post (
+        num INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        title VARCHAR(50) NOT NULL,
+        writer VARCHAR(50) NOT NULL,
+        content TEXT NOT NULL,
+        reg_date DATETIME NOT NULL
+    );
+
+  
+  
